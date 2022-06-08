@@ -1,5 +1,6 @@
 package io.capstone.website_service;
 
+import io.capstone.website_service.entity.Role;
 import io.capstone.website_service.entity.User;
 import io.capstone.website_service.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -37,4 +38,6 @@ public class UserRepositoryTests {
 
         assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
     }
+
+
 }

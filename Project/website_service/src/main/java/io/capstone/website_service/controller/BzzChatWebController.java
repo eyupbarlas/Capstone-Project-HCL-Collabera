@@ -47,6 +47,9 @@ public class BzzChatWebController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
+        if (user.getRole() != "ADMIN") {
+            user.setEnabled(true);
+        }
 
         userService.save(user);
 
