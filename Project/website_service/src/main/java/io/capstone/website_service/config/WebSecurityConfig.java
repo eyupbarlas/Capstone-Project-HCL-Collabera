@@ -120,7 +120,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/register", "/register_process", "/api/hello").permitAll()
                 //.antMatchers("/users").hasAnyAuthority("USER", "ADMIN") -> not working
                 .antMatchers("/users").permitAll()
-                .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
+//                .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/admin").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll().successHandler(new AuthenticationSuccessHandler() {

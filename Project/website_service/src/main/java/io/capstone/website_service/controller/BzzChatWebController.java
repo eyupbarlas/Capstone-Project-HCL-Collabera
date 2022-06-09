@@ -3,13 +3,19 @@ package io.capstone.website_service.controller;
 import io.capstone.website_service.entity.User;
 import io.capstone.website_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class BzzChatWebController {
@@ -23,7 +29,11 @@ public class BzzChatWebController {
     @GetMapping("/")
     public String homePage() {
         //TODO-> only admin access?
-
+//        Authentication authetication = SecurityContextHolder.getContext().getAuthentication();
+//        if(authetication != null && authetication.getPrincipal()
+//                instanceof UserDetails && ((UserDetails)authetication.getPrincipal()).getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("ADMIN"))){
+//            return "redirect:/admin";
+//        }
         return "index";
     }
 
@@ -49,7 +59,7 @@ public class BzzChatWebController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
-        if (user.getRole() != "ADMIN") {
+        if (!Objects.equals(user.getRole(), "ADMIN")) {
             user.setEnabled(true);
         }
 
@@ -58,7 +68,7 @@ public class BzzChatWebController {
         return "register_success";
     }
 
-    @GetMapping("/admin")
+    @RequestMapping(value = "/admin" , method = RequestMethod.GET)
     public String admin() {
         return "admin";
     }
