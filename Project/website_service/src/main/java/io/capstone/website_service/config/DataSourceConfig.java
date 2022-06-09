@@ -10,9 +10,9 @@ import javax.sql.DataSource;
 public class DataSourceConfig {
     @Bean
     public DataSource dataSource() {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName("com.mysql.cj.jdbc.Driver");
-        dataSourceBuilder.url("jdbc:mysql://${MYSQL_HOST:localhost}:3306/capstoneproject");
+        dataSourceBuilder.url("jdbc:mysql://localhost:3306/capstoneproject");
         dataSourceBuilder.username("root");
         dataSourceBuilder.password("Eb914649.");
 

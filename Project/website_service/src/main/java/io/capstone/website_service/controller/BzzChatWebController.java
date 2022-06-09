@@ -22,6 +22,8 @@ public class BzzChatWebController {
      */
     @GetMapping("/")
     public String homePage() {
+        //TODO-> only admin access?
+
         return "index";
     }
 
@@ -56,6 +58,10 @@ public class BzzChatWebController {
         return "register_success";
     }
 
+    @GetMapping("/admin")
+    public String admin() {
+        return "admin";
+    }
 
     /**
      * List of users registered page access
