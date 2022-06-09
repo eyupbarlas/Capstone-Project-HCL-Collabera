@@ -27,8 +27,8 @@ import java.io.IOException;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-//    @Autowired
-//    private DataSource dataSource;
+    @Autowired
+    private DataSource dataSource;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -117,11 +117,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     //TODO-> Make better configuration
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/register", "/register_process").permitAll()
+                .antMatchers("/", "/register", "/register_process", "/api/hello").permitAll()
                 //.antMatchers("/users").hasAnyAuthority("USER", "ADMIN") -> not working
                 .antMatchers("/users").permitAll()
-                .antMatchers("/api/user/**").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers("/api/admin").hasAnyAuthority("ADMIN")
+                .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll().successHandler(new AuthenticationSuccessHandler() {
@@ -138,7 +137,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 })
                 .usernameParameter("email")
-                .defaultSuccessUrl("/users")
+                .defaultSuccessUrl("/dashboard")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll()
@@ -146,5 +145,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/403");
     }
 
-
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+        authenticationManagerBuilder.jdbcAuthentication()
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .dataSource(dataSource)
+                .usersByUsernameQuery("SELECT email, password, enabled FROM user where email=?")
+                .authoritiesByUsernameQuery("SELECT email, role FROM user where email=?");
+    }
 }

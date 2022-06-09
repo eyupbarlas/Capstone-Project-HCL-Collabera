@@ -69,4 +69,9 @@ public class BzzChatWebController {
 
         return "users";
     }
+
+    @GetMapping("/dashboard")
+    public String dashboardPage() {
+        return "dashboard";
+    }
 }
