@@ -127,7 +127,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/", "/register", "/register_process", "/api/hello").permitAll()
-                //.antMatchers("/users").hasAnyAuthority("USER", "ADMIN") -> not working
+//                .antMatchers("/users").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 .antMatchers("/users").permitAll()
 //                .antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
                 .antMatchers("/admin").permitAll()
