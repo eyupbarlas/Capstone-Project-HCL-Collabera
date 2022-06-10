@@ -367,7 +367,7 @@
           contentType: "application/json",
           success : function (data) {
             console.log(data);
-            chatId = data.convId;
+            chatId = data.chatId;
             generate_message( data.data , "user" );
           }
         });

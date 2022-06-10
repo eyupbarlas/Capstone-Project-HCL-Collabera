@@ -1,18 +1,42 @@
+#spring:
+#  application:
+#    name: API-GATEWAY
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: WEBSITE_SERVICE
+#          uri: http://localhost:8081/
+#          predicates:
+#            - Path=/website_service/**
+#        - id: API_SERVICE
+#          uri: http://localhost:8082/
+#          predicates:
+#            - Path=/api_service/**
+#        - id: EUREKA_SERVER_SERVICE
+#          uri: http://localhost:8761/
+#          predicates:
+#            - Path=/eureka_server_service/**
+
+
 spring:
   application:
     name: API-GATEWAY
   cloud:
     gateway:
       routes:
-        - id: WEBSITE_SERVICE
-          uri: http://localhost:8081/
-          predicates:
-            - Path=/website_service/**
         - id: API_SERVICE
           uri: http://localhost:8082/
           predicates:
-            - Path=/api_service/**
-        - id: EUREKA_SERVER_SERVICE
-          uri: http://localhost:8761/
+            - Path=/api/**
+        - id: API_SERVICE
+          uri: http://localhost:8082/
           predicates:
-            - Path=/eureka_server_service/**
+            - Path=/login
+        - id: WEBSITE_SERVICE
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/web/**
+        - id: WEBSITE_SERVICE
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/
