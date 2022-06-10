@@ -22,6 +22,7 @@ public class WebsiteServiceApplication {
 	@Bean
 	public void addData() {
 		qaRepository.save(new QA(null, "I love you", "ok", "love", "LOVE"));
+		qaRepository.save(new QA(null, "What's up dawg", "Nothing much, what's up with you", "Greeting", "GREETING"));
 		qaRepository.save(new QA(null, "hi", "Hello", "Greeting", "GREETING"));
 	}
 }
