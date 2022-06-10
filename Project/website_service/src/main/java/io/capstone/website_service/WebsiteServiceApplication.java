@@ -16,12 +16,12 @@ public class WebsiteServiceApplication {
 		SpringApplication.run(WebsiteServiceApplication.class, args);
 	}
 
+	/**
+	 * Adding data to database for testing purposes(questions and answers)
+	 */
 	@Bean
 	public void addData() {
-		qaRepository.save(new QA(null, "Campus Size", "1200acres", "Campus", "CAMPUS"));
-		qaRepository.save(new QA(null, "Campus Color", "Green", "Campus", "CAMPUS"));
-		qaRepository.save(new QA(null, "Number of Departments", "10", "Department", "DEPARTMENTS"));
-		qaRepository.save(new QA(null, "Male Female Ratio", "50:50", "Ratio", "FUN"));
+		qaRepository.save(new QA(null, "I love you", "ok", "love", "LOVE"));
 		qaRepository.save(new QA(null, "hi", "Hello", "Greeting", "GREETING"));
 	}
 }

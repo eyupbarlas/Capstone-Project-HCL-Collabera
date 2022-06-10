@@ -30,11 +30,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    /**
+     * Injecting user details service instance
+     * @return user details service instance
+     */
     @Bean
     public UserDetailsService userDetailsService() {
         return new MyUserDetailsService();
     }
 
+
+    /**
+     * Password encoding injection
+     * @return password encoder instance
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -146,6 +155,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/403");
     }
 
+    /**
+     * @param authenticationManagerBuilder object
+     * @throws Exception if queries don't get a match
+     */
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.jdbcAuthentication()

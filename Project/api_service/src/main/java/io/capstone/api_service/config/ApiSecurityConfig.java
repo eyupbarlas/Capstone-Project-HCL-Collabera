@@ -29,6 +29,13 @@ public class ApiSecurityConfig extends UsernamePasswordAuthenticationFilter {
         this.authenticationManager = authenticationManager;
     }
 
+    /**
+     * @param request  from which to extract parameters and perform the authentication
+     * @param response the response, which may be needed if the implementation has to do a
+     *                 redirect as part of a multi-stage authentication process (such as OpenID).
+     * @return authentication token
+     * @throws AuthenticationException authentication exception
+     */
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         String email = request.getParameter("email");

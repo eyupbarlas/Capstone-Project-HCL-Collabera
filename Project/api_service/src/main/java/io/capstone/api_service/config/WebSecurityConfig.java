@@ -67,6 +67,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
         return super.authenticationManagerBean();
     }
 
+    /**
+     * @param authenticationManagerBuilder object
+     * @throws Exception if queries don't get a match
+     */
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.jdbcAuthentication()

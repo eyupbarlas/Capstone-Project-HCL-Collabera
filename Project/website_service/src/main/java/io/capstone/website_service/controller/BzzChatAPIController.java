@@ -28,6 +28,12 @@ public class BzzChatAPIController {
     @Autowired
     private UserService userService;
 
+
+    /**
+     * Connecting AJAX to API
+     * @param messageBody instance
+     * @return response and HTTP Status code
+     */
     @ResponseBody
     @PostMapping("/api/hello")
     public ResponseEntity<Response> hello(@RequestBody MessageBody messageBody) {
@@ -58,6 +64,11 @@ public class BzzChatAPIController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * Bot that authenticates the user and gets the messages
+     * @param message message sent by user
+     * @return the response to that message
+     */
     public String bzzBot(String message) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -77,12 +88,21 @@ public class BzzChatAPIController {
         return result;
     }
 
+    /**
+     * Getting all chats as a list
+     * @return response and HTTP Status code
+     */
     @PostMapping("/admin/chats")
     public ResponseEntity<List<Chat>> chats() {
         List<Chat> response = userService.getChats();
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    /**
+     * Getting all messages as a list
+     * @param chatInput chat input response
+     * @return response and HTTP Status code
+     */
     @PostMapping("/admin/messages")
     public ResponseEntity<List<Message>> messages(@RequestBody ChatInput chatInput) {
         List<Message> response = userService.getMessages(chatInput.getId());

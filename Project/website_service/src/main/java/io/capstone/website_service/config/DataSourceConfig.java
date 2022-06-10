@@ -8,6 +8,10 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataSourceConfig {
+    /**
+     * Redefining the datasource configurations as Bean
+     * @return datasource object
+     */
     @Bean
     public DataSource dataSource() {
         DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();

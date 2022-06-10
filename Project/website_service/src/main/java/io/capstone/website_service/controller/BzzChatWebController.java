@@ -66,6 +66,10 @@ public class BzzChatWebController {
         return "register_success";
     }
 
+    /**
+     * Admin page
+     * @return admin HTML page
+     */
     @GetMapping("/admin")
     public String admin() {
         return "admin";
@@ -84,6 +88,9 @@ public class BzzChatWebController {
         return "users";
     }
 
+    /**
+     * @return dashboard page
+     */
     @GetMapping("/dashboard")
     public String dashboardPage() {
         return "dashboard";
