@@ -23,7 +23,7 @@ Capstone Project for HCL / Collabera.
 * For "ADMIN", ability to see chat history and registered users.
 
 ## How To Use
-### Required Modules
+### Required Modules & Programs
 * Java 17+
 * Spring Boot Web Framework
 * MySQL 
