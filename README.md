@@ -38,6 +38,14 @@ Capstone Project for HCL / Collabera.
 * Lastly, to complete the preparation stage we need to fill our `application.properties` file. Copying the file in this project will be sufficent but database username and password must be filled by the project user. 
 <br>
 
+## Current Bugs and To Do's
+### Bugs
+* Chat history page; images of the chatting users are same, should be different.
+* Problem with role privilages; some pages doesn't redirect, needs fixing. Hotfix: Disabled for now.
+### To Do's
+* Better UI in Chat history page.
+* Custom Login page. 
+
 > **Personal Information**
 > 
 >> Eyüp Barlas  eyupbarlas2134@gmail.com
