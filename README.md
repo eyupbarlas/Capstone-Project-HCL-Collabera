@@ -36,7 +36,6 @@ Capstone Project for HCL / Collabera.
 * As for database, this project contains MySQL. In order to make the correct setup, we need to head to [MySQL website](https://dev.mysql.com/downloads/installer/ "mysql") and find the correct package to download. After setup, we need the [create our database](https://www.inmotionhosting.com/support/server/databases/create-a-mysql-database/ "database create").
 * To build up the Spring Boot application, we need to head to [Spring Initalizr](https://start.spring.io/ "start spring"). We can select optimal versions of Java and Spring. Also we will select the project dependencies here.
 * Lastly, to complete the preparation stage we need to fill our `application.properties` file. Copying the file in this project will be sufficent but database username and password must be filled by the project user. 
-<br>
 
 ## Current Bugs and To Do's
 ### Bugs
@@ -45,6 +44,7 @@ Capstone Project for HCL / Collabera.
 ### To Do's
 * Better UI in Chat history page.
 * Custom Login page. 
+<br>
 
 > **Personal Information**
 > 
