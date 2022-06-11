@@ -4,7 +4,7 @@ Capstone Project for HCL / Collabera.
 > Project documentations: 11.06.22
 
 ## Architecture
-![CapstoneProjectDiagram](https://user-images.githubusercontent.com/72407947/173195946-f0615792-3599-4589-8011-5b50f5119666.png)
+![CapstoneProjectDiagram](https://user-images.githubusercontent.com/72407947/173202745-617fa75f-7ce7-4d22-ad47-60b3c21d8831.png)
 
 
 ## About Project
