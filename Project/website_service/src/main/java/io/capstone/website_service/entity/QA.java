@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+/**
+ * Questions and Answers Entity
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

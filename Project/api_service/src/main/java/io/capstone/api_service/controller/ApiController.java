@@ -19,6 +19,10 @@ public class ApiController {
     @Autowired
     private UserService userService;
 
+    /**
+     * Function to return chats with admin access
+     * @return response of the chat and HTTP Status code 200
+     */
     @ResponseBody
     @PostMapping("/api/admin/chats")
     public ResponseEntity<List<Chat>> chatsAdmin() {
@@ -26,6 +30,11 @@ public class ApiController {
         return new ResponseEntity<>(chatResponse, HttpStatus.OK);
     }
 
+    /**
+     * Function to return messages with admin access
+     * @param chatInput pre-made input request
+     * @return response of the message and HTTP Status code 200
+     */
     @ResponseBody
     @PostMapping("/api/admin/messages")
     public ResponseEntity<List<Message>> messagesAdmin(@RequestBody ChatInput chatInput) {
@@ -33,6 +42,10 @@ public class ApiController {
         return new ResponseEntity<>(messageResponse, HttpStatus.OK);
     }
 
+    /**
+     * Function to return chats with user access
+     * @return response of the chat and HTTP Status code 200
+     */
     @ResponseBody
     @PostMapping("/api/user/chats")
     public ResponseEntity<List<Chat>> chatsUser() {
@@ -40,6 +53,11 @@ public class ApiController {
         return new ResponseEntity<>(chatResponse, HttpStatus.OK);
     }
 
+    /**
+     * Function to return messages with user access
+     * @param chatInput pre-made input request
+     * @return response of the message and HTTP Status code 200
+     */
     @ResponseBody
     @PostMapping("/api/user/messages")
     public ResponseEntity<List<Message>> messagesUser(@RequestBody ChatInput chatInput) {

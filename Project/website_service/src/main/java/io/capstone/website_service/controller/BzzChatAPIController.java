@@ -28,7 +28,6 @@ public class BzzChatAPIController {
     @Autowired
     private UserService userService;
 
-
     /**
      * Connecting AJAX to API
      * @param messageBody instance
@@ -42,7 +41,7 @@ public class BzzChatAPIController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication != null && authentication.getPrincipal() instanceof UserDetails) {
-            MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal(); //? testing userdetails overrided
+            MyUserDetails myUserDetails = (MyUserDetails) authentication.getPrincipal(); //? testing userDetails override
             user = myUserDetails.getUsername();
         }
 
@@ -84,8 +83,7 @@ public class BzzChatAPIController {
             }
 //            }
         }
-        String result = userService.isInQA(message);
-        return result;
+        return userService.isInQA(message);
     }
 
     /**

@@ -54,11 +54,11 @@ public class BzzChatWebController {
      */
     @PostMapping("/register_process")
     public String registerProcess(User user) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); //! Password encryption
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         if (!Objects.equals(user.getRole(), "ADMIN")) {
-            user.setEnabled(true);
+            user.setEnabled(true); //? If user is not admin, make it enabled
         }
 
         userService.save(user);

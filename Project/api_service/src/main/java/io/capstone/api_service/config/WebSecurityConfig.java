@@ -60,7 +60,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
      * </pre>
      *
      * @return the {@link AuthenticationManager}
-     * @throws Exception
+     * @throws Exception exception
      */
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {

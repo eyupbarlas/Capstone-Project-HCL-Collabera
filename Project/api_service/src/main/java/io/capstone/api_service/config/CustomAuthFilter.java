@@ -34,22 +34,22 @@ public class CustomAuthFilter extends OncePerRequestFilter {
      */
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if( !request.getRequestURL().isEmpty() && (request.getServletPath().equals("/login")) ){
+        if( !request.getRequestURL().isEmpty() && (request.getServletPath().equals("/login")) ){ // initiating filter
             filterChain.doFilter(request , response);
         } else {
             String authHeader = request.getHeader(AUTHORIZATION);
 
             if( authHeader == null ){
                 response.setHeader("Error" , "Token Error");
-                response.sendError( 403 );
+                response.sendError( 403 ); // unauthorized error
             } else {
-                if( !authHeader.substring(0 ,7 ).equals("Bearer") ){
+                if(!authHeader.substring(0 ,7 ).equals("Bearer")) {
                     response.setHeader("Invalid", "Invalid Token Type");
-                    response.sendError( 403 );
+                    response.sendError( 403 ); // unauthorized error
                 } else {
-                    try {
+                    try {   //? building the JWT structure
                         String token = authHeader.substring("Bearer".length() );
-                        Algorithm algorithm = Algorithm.HMAC512( "bzzmanssecret".getBytes());
+                        Algorithm algorithm = Algorithm.HMAC512("bzzmanssecret".getBytes());
 
                         JWTVerifier verifier = JWT.require(algorithm).build();
 
